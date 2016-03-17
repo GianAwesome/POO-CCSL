@@ -23,8 +23,14 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Use Haml for templates
+gem 'haml'
+
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+# Use bootstrap-sass for css
+gem 'bootstrap-sass', '3.2.0.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -41,5 +47,15 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+# Acceptance tests
+group :cucumber do
+  gem 'cucumber', '~> 1.3.20'
+  gem 'cucumber-rails', :require => false
+  # Version fixed greater than 1.4.1. See:
+  # https://github.com/DatabaseCleaner/database_cleaner/issues/317
+  gem 'database_cleaner', '>= 1.4.1'
+  gem 'poltergeist', '~> 1.6.0'
 end
 
