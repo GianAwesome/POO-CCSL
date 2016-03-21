@@ -1,0 +1,9 @@
+.row
+  .span6.offset5
+    .well
+      = form_tag :action=> 'index' do
+        %h2 Bem-vindo
+        %p Bem-vindo ao gerenciador de eventos, preencha o campo abaixo com um username para criar uma conta de administrador
+        .clearfix
+          = text_field :setting, :username
+          = submit_tag 'Salvar'

@@ -1,0 +1,13 @@
+.row
+  .span6.offset5
+    .well
+      %h2 Parabéns!
+      %p Você realizou o cadastro com sucesso
+      %p
+        %strong="Username:"
+        = current_user.username
+      %p
+        %strong="Senha:"
+        = session[:tmppass]
+      %p Por favor não perca essa senha, ela é irrecuperável.
+      %p Link no futuro?
