@@ -6,4 +6,23 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+    %header
+      %nav.navbar-default
+        .container-fluid
+          .navbar-header
+            = link_to "CCSL", root_path, :class => "navbar-brand"
+          %ul.nav.navbar-nav
+            %li.nav-item= link_to "CCSL", root_path, class: "nav-link"
+          %ul.nav.navbar-nav.navbar-right
+            - if logged_in?
+              %li.nav-item
+                = link_to logout_path, method: "delete", class: "nav-link" do
+                  %span(class="glyphicon glyphicon-log-out")
+                  Sair
+            - else
+              %li.nav-item
+                = link_to login_path, class: "nav-link" do
+                  %span(class="glyphicon glyphicon-log-in")
+                  Entrar
+    .container
+      = yield

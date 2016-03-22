@@ -5,10 +5,12 @@ Feature: create a admin user
 
 Background: empty database
   Given no user exist
-  And I am on "homepage"
+  And I am on "the homepage"
 
 
 Scenario: create a admin user
-  Then I should see "user: admin"
+  When I fill in "setting_username" with "admin"
+  And I press "Salvar"
+  Then I should see "Username: admin"
   And I should see an admin password
   And the user "admin" exists
