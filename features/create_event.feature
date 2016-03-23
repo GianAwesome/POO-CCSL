@@ -9,7 +9,7 @@ Background: user has been added to database
   | john      | 123456    |
 
   And I am logged in as "john", "123456"
-  And I am on "new event page"
+  And I am on "the new event page"
 
 
 Scenario: create an event

@@ -13,7 +13,7 @@ Background: user has been added to database
   | john      | 123456    |
 
   And I am logged in as "admin", "123456"
-  And I am on the "users page"
+  And I am on "the users page"
 
 
 Scenario: delete user

@@ -9,12 +9,13 @@ Background: admin has been added to database
   | admin     | 123456    |  
 
   And I am logged in as "admin", "123456"
-  And I am on the "new user page"
+  And I am on "the new user page"
 
 
 Scenario: create a new user
   When I fill in "Username" with "john"
   And I fill in "Senha" with "654321"
-  And I press "Criar"
+  And I fill in "Confirmar Senha" with "654321"
+  And I press "Submeter"
   Then I should see "Usuario john criado com sucesso"
   And the user "john" exists

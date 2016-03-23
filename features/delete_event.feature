@@ -12,7 +12,7 @@ Background: user and event has been added to database
   | |||||||||
 
   And I am logged in as "john", "123456"
-  And I am on the "events page"
+  And I am on "the events page"
 
 
 Scenario: delete event

@@ -8,6 +8,12 @@ Given /the following user exist/ do |users_table|
   end
 end
 
+Given /the following admin exists/ do |users_table|
+  users_table.hashes.each do |user|    
+    User.create(username: user["username"], password: user["password"], admin: true)
+  end
+end
+
 Given /I am logged in as "(.*)", "(.*)"$/ do |username, password|  
   visit("/login")
   fill_in("session_username", :with => username)

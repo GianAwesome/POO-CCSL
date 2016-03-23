@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = 'Usuario criado com sucesso.'
+      flash[:notice] = "Usuario #{@user.username} criado com sucesso."
       redirect_to user_path @user
     else
       flash[:warning] = @user.errors.full_messages
