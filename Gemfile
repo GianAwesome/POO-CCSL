@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use bootstrap-sass for css
 gem 'bootstrap-sass', '3.2.0.0'
 
+gem 'rails-i18n'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

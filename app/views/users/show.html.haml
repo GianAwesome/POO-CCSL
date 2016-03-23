@@ -1,7 +1,7 @@
-%p#notice= notice
-%p
-  %strong Username:
-  = @user.username
-= link_to 'Editar', edit_user_path(@user)
-|
-\#{link_to 'Voltar', users_path}
+.col-md-6.col-md-offset-3
+  %p
+    %strong Username:
+    = @user.username
+  = link_to 'Editar', edit_user_path(@user)
+  |
+  \#{link_to 'Voltar', users_path}

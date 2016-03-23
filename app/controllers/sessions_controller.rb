@@ -1,20 +1,20 @@
 class SessionsController < ApplicationController
   skip_before_filter :set_current_user
+ # vVPtje7
   def new
+    redirect_to user_path current_user if logged_in?
   end
 
   def create
-    @user = User.find_by(username: params[:session][:username].downcase)
-    respond_to do |format|
-      if succesfully_login @user
-        log_in @user
-        params[:remember_me] == "1" ? remember(@user) : forget(@user)
-        format.html { redirect_to @user, notice: "Bem vindo #{@user.username}." }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    user = User.find_by(username: params[:session][:username].downcase)
+    if succesfully_login user
+      log_in user
+      params[:remember_me] == "1" ? remember(user) : forget(user)
+      flash[:notice] = "Bem vindo #{user.username}."
+      redirect_to user_path user
+    else
+      flash[:warning] = ['Username ou senha invalidos']
+      render 'new'
     end
   end
 

@@ -25,40 +25,39 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'Usuario criado com sucesso.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      flash[:notice] = 'Usuario criado com sucesso.'
+      redirect_to user_path @user
+    else
+      flash[:warning] = @user.errors.full_messages
+      render 'new'
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Usuario atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = 'Usuario atualizado com sucesso.'
+      redirect_to user_path @user
+    else
+      flash[:warning] = @user.errors.full_messages
+      render 'edit'
     end
   end
 
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    @user = User.find(params[:id])
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'Usuario apagado com sucesso.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = "#{@user.username} apagado."
+    redirect_to root_path
   end
 
   private
