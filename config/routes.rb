@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :events
+  resources :events
+  resources :event_types
+  resources :events
   get 'sessions/new'
 
   resources :users
