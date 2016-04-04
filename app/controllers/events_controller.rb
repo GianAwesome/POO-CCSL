@@ -25,40 +25,35 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.save
+      flash[:notice] = "Evento criado com sucesso."
+      redirect_to event_path @event
+    else
+      flash[:warning] = @event.errors.full_messages
+      render 'new'
     end
   end
 
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      flash[:notice] = 'Evento atualizado com sucesso.'
+      redirect_to event_path @event
+    else
+      flash[:warning] = @event.errors.full_messages
+      render 'edit'
     end
   end
 
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    @event = Event.find(params[:id])
     @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = "Evento apagado."
+    redirect_to event_path
   end
 
   private

@@ -9,19 +9,19 @@ class Event < ActiveRecord::Base
     presence: true,
     length: {maximum: 8000}
 
-  validates place:
+  validates :place,
     length: {maximum: 256}
 
-  validates address:
+  validates :address,
     length: {maximum: 256}
 
-  validates speaker:
+  validates :speaker,
     length: {maximum: 256}
 
-  validates responsible:
+  validates :responsible,
     length: {maximum: 256}
 
-  validates performance:
+  validates :performance,
     length: {maximum: 256}
 
     

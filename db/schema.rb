@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329135528) do
+ActiveRecord::Schema.define(version: 20160329141341) do
 
   create_table "event_types", force: :cascade do |t|
     t.string   "name"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20160329135528) do
     t.string   "responsible"
     t.string   "performance"
     t.string   "url"
-    t.integer  "type"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "event_type_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,7 +43,5 @@ ActiveRecord::Schema.define(version: 20160329135528) do
     t.boolean  "admin",           default: false
     t.string   "remember_digest"
   end
-
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

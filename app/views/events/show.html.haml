@@ -1,0 +1,36 @@
+%p
+  %strong Título:
+  = @event.title
+%p
+  %strong Resumo:
+  = @event.summary
+%p
+  %strong Horário:
+  = @event.time
+%p
+  %strong Data:
+  = @event.date
+%p
+  %strong Local:
+  = @event.place
+%p
+  %strong Endereço:
+  = @event.address
+%p
+  %strong Apresentador:
+  = @event.speaker
+%p
+  %strong Responsável:
+  = @event.responsible
+%p
+  %strong Realização:
+  = @event.performance
+%p
+  %strong URL:
+  = @event.url
+%p
+  %strong Tipo de evento:
+  = @event.event_type_id
+= link_to 'Editar', edit_event_path(@event)
+|
+\#{link_to 'Voltar', events_path}
