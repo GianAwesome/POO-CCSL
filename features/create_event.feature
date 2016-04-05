@@ -14,18 +14,17 @@ Background: user has been added to database
 
 Scenario: create an event
   When I fill in the following:
-  | title         |
-  | summary       |
-  | time          |
-  | date          |
-  | place         |
-  | address       |
-  | speaker       |
-  | responsible   |
-  | performance   |
-  | url           |
-  | type          |
-  And I press "Criar"
+  | event_title         | Nova Reunião  |
+  | event_summary       | Asdasd        |
+  | event_place         | Aqui          |
+  | event_address       | Av. Aqui 76   |
+  | event_speaker       | Eu            |
+  | event_responsible   | Vc            |
+  | event_performance   | Alguém        |
+  | event_url           | www.site.com  |
+  | event_event_type_id | Palestra      |
+  And I select "April 04, 2016" as the event "date" date
+  And I press "Criar Evento"
   Then I should see "Evento criado com sucesso"
-  And I should see "Titulo do evento"
-  And the event "Titulo do evento" exists
+  And I should see "Nova Reunião"
+  And the event "Nova Reunião" exists
