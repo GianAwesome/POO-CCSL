@@ -39,6 +39,6 @@
   .form-group
     = f.label :event_type_id, 'Tipo'
     %br
-      = f.number_field :event_type_id
+      = f.select :event_type_id, options_from_collection_for_select(@event_types, 'id', 'name_capitalize')
   .actions
     = f.submit
