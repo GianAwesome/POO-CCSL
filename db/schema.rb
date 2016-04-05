@@ -44,4 +44,6 @@ ActiveRecord::Schema.define(version: 20160329141341) do
     t.string   "remember_digest"
   end
 
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
+
 end
