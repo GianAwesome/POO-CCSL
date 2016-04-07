@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event_types, only: [:new, :edit, :create, :update]
 
   # GET /events
   # GET /events.json
@@ -15,12 +16,11 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @event_types = EventType.all
+  
   end
 
   # GET /events/1/edit
   def edit
-    @event_types = EventType.all
   end
 
   # POST /events
@@ -55,7 +55,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
     flash[:notice] = "Evento apagado."
-    redirect_to event_path
+    redirect_to events_path
   end
 
   private
@@ -64,8 +64,12 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
 
+    def set_event_types
+      @event_types = EventType.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :summary, :time, :date, :place, :address, :speaker, :responsible, :performance, :url, :event_type_id)
+      params.require(:event).permit(:title, :summary, :time, :date, :place, :address, :speaker, :responsible, :performance, :url, :event_type_id, :image)
     end
 end

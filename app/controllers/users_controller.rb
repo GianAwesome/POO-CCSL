@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :set_current_user
   # GET /users
   # GET /users.json
   def index
@@ -57,7 +56,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "#{@user.username} apagado."
-    redirect_to user_path
+    redirect_to users_path
   end
 
   private

@@ -34,6 +34,8 @@ gem 'bootstrap-sass', '3.2.0.0'
 
 gem 'rails-i18n'
 
+gem 'paperclip'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
