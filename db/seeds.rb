@@ -1,7 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# encoding: utf-8
+
+event_types = [
+  "palestra",
+  "seminário",
+  "curso",
+  "mini-curso",
+  "encontro",
+  "reunião",
+  "evento",
+  "hackatona"
+]
+
+ActiveRecord::Base.transaction do
+  event_types.each do |event_name|
+    EventType.create("name" => event_name)
+  end
+end
