@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :set_event_types, only: [:new, :edit, :create, :update]
+  before_action :check_user, only: [:edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -26,7 +27,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(event_params.merge :user => current_user)
     if @event.save
       flash[:notice] = "Evento criado com sucesso."
       redirect_to event_path @event
@@ -71,5 +72,9 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :summary, :time, :date, :place, :address, :speaker, :responsible, :performance, :url, :event_type_id, :image)
+    end
+
+    def check_user
+      redirect_to events_path if current_user != @event.user
     end
 end

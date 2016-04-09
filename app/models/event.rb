@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :event_type
+  belongs_to :user
 
   validates :title,
     presence: true,
@@ -26,7 +27,6 @@ class Event < ActiveRecord::Base
 
   has_attached_file :image, url: "/system/:hash.:extension", hash_secret: "abc123"
 
-  validates_attachment :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/png"] },
-  :size => { :in => 0..5.megabytes }
+  validates_attachment :image, :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/png"] }, :size => { :in => 0..5.megabytes }
     
 end

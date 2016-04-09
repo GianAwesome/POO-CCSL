@@ -17,5 +17,6 @@
           %td= event.date
           %td= event.place
           %td= event.speaker
-          %td= link_to 'Editar', edit_event_path(event)
-          %td= link_to 'Apagar', event, method: :delete, data: { confirm: 'Tem certeza?' }
+          -if current_user == event.user
+            %td= link_to 'Editar', edit_event_path(event)
+            %td= link_to 'Apagar', event, method: :delete, data: { confirm: 'Tem certeza?' }

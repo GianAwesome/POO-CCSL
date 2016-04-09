@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
 
 before_save { self.username = username.downcase }
+
+has_many :events
+
 validates :username,
   presence: true,
   length: {maximum: 50},
