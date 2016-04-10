@@ -11,7 +11,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :responsible
       t.string :performance
       t.string :url
-      t.integer :event_type_id
+      t.references :event_type , index: true, foreign_key: true, null: false
       t.references :user, index: true, foreign_key: true, null: false
       t.timestamps null: false
     end
