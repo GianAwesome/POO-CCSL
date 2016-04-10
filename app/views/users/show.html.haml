@@ -2,6 +2,9 @@
   %p
     %strong Username:
     = @user.username
+  %p
+    %strong Tipo:
+    = (@user.admin)? "Administrador": "Usuario Comum"
   = link_to 'Editar', edit_user_path(@user)
   |
   \#{link_to 'Voltar', users_path}

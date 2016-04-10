@@ -37,6 +37,9 @@
       %strong Imagem:
       %br
       = image_tag @event.image.url
+  %p
+    %strong Criado por:
+    = link_to_if admin?, @event.user.username, user_path(@event.user)
   -if current_user == @event.user
     = link_to 'Editar', edit_event_path(@event)
   \#{link_to 'Voltar', events_path}

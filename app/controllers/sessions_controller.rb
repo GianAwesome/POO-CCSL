@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       log_in user
       params[:remember_me] == "1" ? remember(user) : forget(user)
       flash[:notice] = "Bem vindo #{user.username}."
-      redirect_to user_path user
+      redirect_to events_path
     else
       flash[:warning] = ['Username ou senha invalidos']
       render 'new'

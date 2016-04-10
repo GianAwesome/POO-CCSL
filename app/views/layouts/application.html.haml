@@ -12,8 +12,8 @@
           .navbar-header
             = link_to "CCSL", root_path, :class => "navbar-brand"
           %ul.nav.navbar-nav
-            %li.nav-item= link_to "Usuários", users_path, class: "nav-link"
-            %li.nav-item= link_to "Eventos", events_path, class: "nav-link"
+            %li.nav-item= link_to "Usuários", users_path, class: "nav-link" if admin?
+            %li.nav-item= link_to "Eventos", events_path, class: "nav-link" if logged_in?
           %ul.nav.navbar-nav.navbar-right
             - if logged_in?
               %li.nav-item

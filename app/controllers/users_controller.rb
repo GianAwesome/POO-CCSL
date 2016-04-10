@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
+  before_action :check_admin_count, only: [:destroy, :set_admin]
   # GET /users
   # GET /users.json
   def index
@@ -33,10 +35,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
-
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
@@ -53,20 +51,53 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = "#{@user.username} apagado."
+    if @user.admin && User.where(admin: true).count == 1
+      flash[:warning] = ["O sistema deve ter no minimo um administrador"]
+    else
+      @user = User.find(params[:id])
+      @user.destroy
+      flash[:notice] = "#{@user.username} apagado."
+    end
+    redirect_to users_path
+  end
+
+  def set_admin
+    if !(params[:admin].to_bool) && User.where(admin: true).count == 1
+      flash[:warning] = ["O sistema deve ter no minimo um administrador"]
+    else
+      @user = User.find(params[:id])
+      if @user.update_attribute(:admin, params[:admin])
+        flash[:notice] = 'Usuario atualizado com sucesso.'
+      else
+        flash[:warning] = @user.errors.full_messages
+      end
+    end
     redirect_to users_path
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by(id: params[:id])
+      if(@user == nil)
+        flash[:warning] = ["Este usuario nao existe"]
+        redirect_to users_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation)
+    end
+
+    def check_admin
+      if !admin?
+        flash[:notice] = "Voce nao possui direitos para acessar esse recurso"
+        redirect_to events_path
+      end
+    end
+
+    def check_admin_count
+      
     end
 end

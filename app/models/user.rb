@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
 before_save { self.username = username.downcase }
 
-has_many :events
+has_many :events, :dependent => :delete_all
 
 validates :username,
   presence: true,

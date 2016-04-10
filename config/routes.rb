@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :events
 
 
-  root :to => 'users#index'
+  root :to => 'events#index'
   # SetupController
   get 'setup' => 'setup#index'
   post 'setup' => 'setup#index'
@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
+  put    'users/:id/set_admin' => 'users#set_admin', :as => :set_admin
   
 end
