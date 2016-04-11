@@ -1,4 +1,8 @@
 # encoding: utf-8
+admin = {:username =>'admin', :password=>'saasbook', :admin=>true}
+
+User.create!(admin)
+
 
 event_types = [
   "palestra",
