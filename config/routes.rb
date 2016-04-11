@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'events/calendar' => 'events#calendar', :as => :calendar
+  get 'events/calendar_events' => 'events#calendar_events'
   resources :event_types
   resources :events
   get 'sessions/new'
@@ -6,8 +8,6 @@ Rails.application.routes.draw do
   get 'next3' => 'events#next3'
 
   resources :users
-
-
 
   root :to => 'events#index'
   # SetupController
@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-
-
 
   put    'users/:id/set_admin' => 'users#set_admin', :as => :set_admin
   

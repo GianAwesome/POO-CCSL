@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+setup = ->
+  $('#calendar').fullCalendar
+    editable: false
+    defaultView: 'agendaWeek'
+    lang: 'pt'
+    allDaySlot: false
+    events: 'calendar_events.json'
+  return
+
+$(document).on 'ready', setup
+$(document).on 'page:load', setup

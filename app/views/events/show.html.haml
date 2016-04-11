@@ -41,7 +41,5 @@
     %strong Criado por:
     = link_to_if admin?, @event.user.username, user_path(@event.user)
   =link_to 'Voltar', events_path
-  -if current_user == @event.user
+  -if (current_user? @event.user or admin?)
     = link_to 'Editar', edit_event_path(@event)
-
-    

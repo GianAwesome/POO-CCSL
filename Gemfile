@@ -36,6 +36,9 @@ gem 'rails-i18n'
 
 gem 'paperclip'
 
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
