@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :events
   get 'sessions/new'
   get 'next' => 'events#next'
+  get 'next3' => 'events#next3'
 
   resources :users
 

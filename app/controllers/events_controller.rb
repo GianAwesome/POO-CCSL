@@ -28,6 +28,10 @@ class EventsController < ApplicationController
     @event = Event.order(:time).order(:date).first
   end
 
+  def next3
+    @events = Event.order(:time).order(:date)[0..2]
+  end
+
   # POST /events
   # POST /events.json
   def create
