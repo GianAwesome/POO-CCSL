@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  skip_before_filter :set_current_user, only: [:calendar, :calendar_events, :show]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :set_event_types, only: [:new, :edit, :create, :update]
   before_action :check_user, only: [:edit, :update, :destroy]
@@ -26,10 +27,6 @@ class EventsController < ApplicationController
 
   def next 
     @event = Event.order(:time).order(:date).first
-  end
-
-  def next3
-    @events = Event.order(:time).order(:date)[0..2]
   end
 
   # POST /events
@@ -68,6 +65,12 @@ class EventsController < ApplicationController
   end
 
   def calendar
+  end
+
+  def calendar_events
+    @events = Event.all
+    @events = @events.where("time >= ?", params[:start].to_datetime) if params[:start] != nil
+    @events = @events.where("time <= ?", params[:end].to_datetime) if params[:end] != nil
   end
 
   private

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'events/calendar' => 'events#calendar', :as => :calendar
+  get 'events/calendar_events' => 'events#calendar_events'
   resources :event_types
   resources :events
   get 'sessions/new'
@@ -19,6 +20,5 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   put    'users/:id/set_admin' => 'users#set_admin', :as => :set_admin
-  put    '/calendar_events' => 'events#calendar_events'
   
 end
