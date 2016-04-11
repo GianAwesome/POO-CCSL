@@ -10,8 +10,7 @@
   .form-group
     = f.label :time, 'Data/Horário'
     %br
-      = f.date_select :date, order: [:day, :month, :year], class: 'form-control'
-      = f.time_select :time, class: 'form-control'
+      = f.datetime_select :time, order: [:day, :month, :year], class: 'form-control'
   .form-group
     = f.label :place, 'Local'
     %br

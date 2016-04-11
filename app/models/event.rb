@@ -33,4 +33,8 @@ class Event < ActiveRecord::Base
 
   validates_attachment :image, :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/png"] }, :size => { :in => 0..5.megabytes }
     
+
+  def date
+    self.time.strftime("%d/%m/%Y")
+  end
 end
