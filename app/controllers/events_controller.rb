@@ -6,7 +6,22 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    @selected_filters = Hash.new
     @events = Event.all
+    if params[:filter]
+      if params[:filter][:my]
+        @events = @events.user_events current_user
+        @selected_filters[:my] = 1
+      end
+      if params[:filter][:all]
+        @selected_filters[:all] = 1           
+      else
+        @selected_filters[:recent] = 1 
+        @events = @events.after
+      end      
+    else
+      @events = @events.after
+    end
   end
 
   # GET /events/1

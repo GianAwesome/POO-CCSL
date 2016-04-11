@@ -37,4 +37,16 @@ class Event < ActiveRecord::Base
   def date
     self.time.strftime("%d/%m/%Y")
   end
+  
+  def self.order_time
+    order(:time)
+  end
+
+  def self.after (day=Time.now) 
+    where("time >= ?", day)
+  end
+
+  def self.user_events user
+    where(:user => user)
+  end
 end

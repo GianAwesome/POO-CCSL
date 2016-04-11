@@ -1,38 +1,38 @@
 = form_for @event, :html => { :multipart => true } do |f|
   .form-group
-    = f.label :title, 'Título'
+    = f.label 'Título'
     %br
       = f.text_field :title, class: 'form-control'
   .form-group
-    = f.label :summary, 'Resumo'
+    = f.label 'Resumo'
     %br
       = f.text_area :summary, rows: 10, class: 'form-control'
   .form-group
-    = f.label :time, 'Data/Horário'
+    = f.label 'Data/Horário'
     %br
       = f.datetime_select :time, order: [:day, :month, :year], class: 'form-control'
   .form-group
-    = f.label :place, 'Local'
+    = f.label 'Local'
     %br
       = f.text_field :place, class: 'form-control'
   .form-group
-    = f.label :address, 'Endereço'
+    = f.label 'Endereço'
     %br
       = f.text_field :address, class: 'form-control'
   .form-group
-    = f.label :speaker, 'Apresentador'
+    = f.label 'Apresentador'
     %br
       = f.text_field :speaker, class: 'form-control'
   .form-group
-    = f.label :responsible, 'Responsável'
+    = f.label 'Responsável'
     %br
       = f.text_field :responsible, class: 'form-control'
   .form-group
-    = f.label :performance, 'Realização'
+    = f.label 'Realização'
     %br
       = f.text_field :performance, class: 'form-control'
   .form-group
-    = f.label :url, 'URL'
+    = f.label 'URL'
     %br
       = f.text_field :url, class: 'form-control'
   .form-group
