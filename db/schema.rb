@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160407205725) do
     t.string   "responsible"
     t.string   "performance"
     t.string   "url"
-    t.integer  "event_type_id"
+    t.integer  "event_type_id",      null: false
     t.integer  "user_id",            null: false
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160407205725) do
     t.datetime "image_updated_at"
   end
 
+  add_index "events", ["event_type_id"], name: "index_events_on_event_type_id"
   add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "users", force: :cascade do |t|

@@ -1,45 +1,48 @@
-.col-md-6.col-md-offset-3
-  %p
-    %strong Título:
-    = @event.title
-  %p
-    %strong Resumo:
-    = @event.summary
-  %p
-    %strong Horário:
-    = @event.time.to_formatted_s(:time)
-  %p
-    %strong Data:
-    = @event.date
-  %p
-    %strong Local:
-    = @event.place
-  %p
-    %strong Endereço:
-    = @event.address
-  %p
-    %strong Apresentador:
-    = @event.speaker
-  %p
-    %strong Responsável:
-    = @event.responsible
-  %p
-    %strong Realização:
-    = @event.performance
-  %p
-    %strong URL:
-    = @event.url
-  %p
-    %strong Tipo de evento:
-    = EventType.find_by(id: @event.event_type_id).name_capitalize
-  -if(@event.image.exists?)
+%h1= @event.title
+.row  
+  .col-md-8.event-left
     %p
-      %strong Imagem:
-      %br
-      = image_tag @event.image.url
-  %p
-    %strong Criado por:
-    = link_to_if admin?, @event.user.username, user_path(@event.user)
-  -if current_user == @event.user
-    = link_to 'Editar', edit_event_path(@event)
-  \#{link_to 'Voltar', events_path}
+      %strong Resumo:
+      - @event.summary.split("\n").each do |line|
+        = line
+        %br
+    -if(@event.image.exists?)
+      %p
+        = image_tag @event.image.url
+  .col-md-4
+    %p
+      %strong Horário:
+      = @event.time.to_formatted_s(:time)
+    %p
+      %strong Data:
+      = @event.date
+    %p
+      %strong Local:
+      = @event.place
+    %p
+      %strong Endereço:
+      = @event.address
+    %p
+      %strong Apresentador:
+      = @event.speaker
+    %p
+      %strong Responsável:
+      = @event.responsible
+    %p
+      %strong Realização:
+      = @event.performance
+    -if @event.url
+      %p
+        %strong URL:
+        = "#{link_to @event.url, "http://" + @event.url}".html_safe
+    %p
+      %strong Tipo de evento:
+      = EventType.find_by(id: @event.event_type_id).name_capitalize    
+    %p
+      %strong Criado por:
+      = link_to_if admin?, @event.user.username, user_path(@event.user)
+    =link_to 'Voltar', events_path
+    -if current_user == @event.user
+      = link_to 'Editar', edit_event_path(@event)
+  
+    
