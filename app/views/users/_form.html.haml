@@ -1,16 +1,16 @@
 = form_for(@user) do |f|
   .form-group
-    = f.label :username
+    = f.label 'Usuário'
     %br
       = f.text_field :username, class: 'form-control'
 
   .form-group
-    =f.label :password, 'Senha'
+    =f.label 'Senha'
     %br
       = f.password_field :password, class: 'form-control'
 
   .form-group
-    =f.label :password_confirmation, 'Confirmar Senha'
+    =f.label 'Confirmar Senha'
     %br
       = f.password_field :password_confirmation, class: 'form-control'
 

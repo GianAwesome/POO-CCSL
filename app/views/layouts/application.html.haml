@@ -27,13 +27,15 @@
                   %span(class="glyphicon glyphicon-log-in")
                   Entrar
     .container
-      %br
-      - if flash[:notice]
-        #notice.message.alert.alert-info= flash[:notice]
-      - elsif flash[:warning]
-        #warning.has_error.message.alert.alert-danger
-          %ul.warning
-            - flash[:warning].each do |msg|
-              %li= msg
+      .row
+        .col-md-6.col-md-offset-3
+          %br
+          - if flash[:notice]
+            #notice.message.alert.alert-info= flash[:notice]
+          - elsif flash[:warning]
+            #warning.has_error.message.alert.alert-danger
+              %ul.warning
+                - flash[:warning].each do |msg|
+                  %li= msg
       .row
         = yield
