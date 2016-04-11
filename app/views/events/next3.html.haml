@@ -1,21 +1,19 @@
 .container
+  %h1.text-center Próximos eventos #{link_to 'Ver Todos', root_path, class: 'btn btn-default btn-xs'}
+  %br
+  %br
   .panel-group
-    %h1.text-center Próximos eventos  #{link_to 'Ver Todos', root_path, class: 'btn btn-default btn-xs'}
-    %br
-    %br
-    .panel
-      - @events.each do |event|
-        %div.col-md-4.panel.panel-default
+    - @events.each do |event|
+      .col-md-4
+        .panel.panel-default
           .panel-heading
             %h2=event.title
           .panel-body
-            .row 
-              %h3= 'Data: '+ event.time.strftime("%d/%m/%y")
-            .row
-              %h4= 'Horário: '+ event.time.strftime("%Hh%M")
-            .row
-              %h4= 'Local: '+ event.place
-            .row
-              %h4= 'Palestrante: '+ event.speaker
-            .row= (current_user == event.user)? (link_to 'Editar', edit_event_path(event)): ""
-            .row= (current_user == event.user)? (link_to 'Apagar', event, method: :delete, data: { confirm: 'Tem certeza?' }): ""
+            %h3= 'Data: '+ event.time.strftime("%d/%m/%y")
+            %h4= 'Horário: '+ event.time.strftime("%Hh%M")
+            %h4= 'Local: '+ event.place
+            %h4= 'Palestrante: '+ event.speaker
+            %h4= 'Realização: '+event.performance
+            %h5= 'Resumo: '+event.summary
+            %h5= (current_user == event.user)? (link_to 'Editar', edit_event_path(event)): ""
+            %h5= (current_user == event.user)? (link_to 'Apagar', event, method: :delete, data: { confirm: 'Tem certeza?' }): ""
