@@ -24,6 +24,10 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def next 
+    @event = Event.order(:time).order(:date).first
+  end
+
   # POST /events
   # POST /events.json
   def create

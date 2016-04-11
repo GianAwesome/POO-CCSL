@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  resources :events
-  resources :events
   resources :event_types
   resources :events
   get 'sessions/new'
+  get 'next' => 'events#next'
 
   resources :users
-  resources :events
+
 
 
   root :to => 'events#index'
@@ -18,6 +17,8 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
+
 
   put    'users/:id/set_admin' => 'users#set_admin', :as => :set_admin
   
