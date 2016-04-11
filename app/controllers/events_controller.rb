@@ -25,11 +25,11 @@ class EventsController < ApplicationController
   end
 
   def next 
-    @event = Event.order(:time).order(:date).first
+    @event = Event.order(:time).first
   end
 
   def next3
-    @events = Event.order(:time).order(:date)[0..2]
+    @events = Event.order(:time)[0..2]
   end
 
   # POST /events
