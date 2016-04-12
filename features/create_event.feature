@@ -26,10 +26,10 @@ Scenario: create an event
   | event_responsible   | Vc            |
   | event_performance   | Alguém        |
   | event_url           | www.site.com  |
-  And I select "Palestra" from "event_event_type_id"
-  And I select "April 04, 2016" from "event_time"
-  And I press "Criar Evento"
-  Then I should see "Evento criado com sucesso"
+  
+  And I press "Submeter"
+  Then the event_type "Palestra" exists
+  And I should see "Evento criado com sucesso"
   And I should see "Nova Reunião"
   And I should see "Asd Reunião"
   And I should see "Aqui"
@@ -40,4 +40,5 @@ Scenario: create an event
   And I should see "www.site.com"
   And I should see "Palestra"
   And I should see "04/04/2016"
+  And I should see "14:30"
   And the event "Nova Reunião" exists

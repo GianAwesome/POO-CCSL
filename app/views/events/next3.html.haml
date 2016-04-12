@@ -1,19 +1,31 @@
-.container
-  %h1.text-center Próximos eventos #{link_to 'Ver Todos', root_path, class: 'btn btn-default btn-xs'}
-  %br
-  %br
+.next.row  
+  .row
+  .col-md-4
+    %br
+    = image_tag("title")
+  .col-md-8
+    %h1.text-uppercase Próximos eventos
   .panel-group
     - @events.each do |event|
       .col-md-4
         .panel.panel-default
           .panel-heading
-            %h2=event.title
+            %h2
+              %strong=event.title
           .panel-body
-            %h3= 'Data: '+ event.time.strftime("%d/%m/%y")
-            %h4= 'Horário: '+ event.time.strftime("%Hh%M")
-            %h4= 'Local: '+ event.place
-            %h4= 'Palestrante: '+ event.speaker
-            %h4= 'Realização: '+event.performance
-            %h5= 'Resumo: '+event.summary
-            %h5= (current_user == event.user)? (link_to 'Editar', edit_event_path(event)): ""
-            %h5= (current_user == event.user)? (link_to 'Apagar', event, method: :delete, data: { confirm: 'Tem certeza?' }): ""
+            %h3
+              %strong Data:
+              #{event.date} - #{event.time.strftime("%Hh%M")}
+            %h3
+              %strong Local:
+              = event.place
+            %h3
+              %strong Palestrante:
+              = event.speaker
+            %h3
+              %strong Realização:
+              = event.performance
+            %h3.text-justify
+              %strong Resumo:
+              = event.summary[0..256]
+              = '...' if event.summary.length > 256

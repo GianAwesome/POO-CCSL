@@ -58,6 +58,17 @@ When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
   select(value, :from => field)
 end
 
+When /^(?:|I )select "([^"]*)" from the select list "([^"]*)"$/ do |value, field|
+  select_by_value(field, value)
+end
+
+When /^(?:|I )select "([^"]*)" as the date from "([^"]*)"$/ do |date, field|
+  date = Date.parse(date)
+  select(date.year.to_s, :from => "#{field}_1i")
+  select(date.strftime("%B"), :from => "#{field}_2i")
+  select(date.day.to_s, :from => "#{field}_3i")
+end
+
 When /^(?:|I )check "([^"]*)"$/ do |field|
   check(field)
 end

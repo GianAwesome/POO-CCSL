@@ -6,7 +6,6 @@
   border-right: 1px solid #DDD;
 }
 
-
 .next {
   h1 {
     font-size: 70px;
@@ -17,7 +16,21 @@
     line-height: 25px;
   }
 
-  h2 {
+  h3 {
     margin-top: 10px;
+    font-size: 35px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  .panel-default {
+    border-color: #333333;
+
+    .panel-heading{
+      background-color: #333333;
+      color:#f5f5f5;
+    }
   }
 }

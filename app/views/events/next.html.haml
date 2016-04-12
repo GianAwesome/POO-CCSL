@@ -1,6 +1,11 @@
 .next.row
-  %h1.text-center= @event.title
-  %h2.text-center
+  .row
+  .col-md-4
+    %br
+    = image_tag("title")
+  .col-md-8
+    %h1= @event.title
+  %h3.text-center
     = @event.date
     |
     = @event.time.to_formatted_s(:time)
