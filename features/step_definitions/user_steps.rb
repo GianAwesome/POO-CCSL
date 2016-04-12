@@ -38,7 +38,16 @@ Then /the user "(.+)" exists/ do |username|
   User.exists?(username: username)
 end
 
+Then /the user "(.+)" is admin/ do |username|
+  User.find_by(username: username).admin
+end
+
 When(/^I delete the user with the name "(.*?)"$/) do |title|
   find('tr', text: title).click_link("Apagar")
+  page.driver.browser.switch_to.alert.accept
+end
+
+When(/^I make admin the user with the name "(.*?)"$/) do |title|
+  find('tr', text: title).click_link("Tornar Administrador")
   page.driver.browser.switch_to.alert.accept
 end
