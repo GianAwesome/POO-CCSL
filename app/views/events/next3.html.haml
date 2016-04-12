@@ -2,30 +2,37 @@
   .row
   .col-md-4
     %br
-    = image_tag("title")
-  .col-md-8
-    %h1.text-uppercase Próximos eventos
-  .panel-group
-    - @events.each do |event|
-      .col-md-4
-        .panel.panel-default
-          .panel-heading
-            %h2
-              %strong=event.title
-          .panel-body
-            %h3
-              %strong Data:
-              #{event.date} - #{event.time.strftime("%Hh%M")}
-            %h3
-              %strong Local:
-              = event.place
-            %h3
-              %strong Palestrante:
-              = event.speaker
-            %h3
-              %strong Realização:
-              = event.performance
-            %h3.text-justify
-              %strong Resumo:
-              = event.summary[0..256]
-              = '...' if event.summary.length > 256
+    = image_tag "title" , class: "img-responsive"
+  
+    
+  %h1.text-uppercase Próximos eventos
+  
+  -if !@events.empty?
+    .col-md-8 
+
+      .panel-group
+        - @events.each do |event|
+          .col-md-4
+            .panel.panel-default
+              .panel-heading
+                %h2
+                  %strong=event.title
+              .panel-body
+                %h3
+                  %strong Data:
+                  #{event.date} - #{event.time.strftime("%Hh%M")}
+                %h3
+                  %strong Local:
+                  = event.place
+                %h3
+                  %strong Palestrante:
+                  = event.speaker
+                %h3
+                  %strong Realização:
+                  = event.performance
+                %h3.text-justify
+                  %strong Resumo:
+                  = event.summary[0..256]
+                  = '...' if event.summary.length > 256
+  - else
+    %h2.text-center Não existem eventos próximos

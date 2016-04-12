@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_filter :set_current_user, only: [:calendar, :calendar_events, :show]
+  skip_before_filter :set_current_user, only: [:calendar, :calendar_events, :show, :next, :next3]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :set_event_types, only: [:new, :edit, :create, :update]
   before_action :check_user, only: [:edit, :update, :destroy]

@@ -2,29 +2,33 @@
   .row
   .col-md-4
     %br
-    = image_tag("title")
-  .col-md-8
-    %h1= @event.title
-  %h3.text-center
-    = @event.date
-    |
-    = @event.time.to_formatted_s(:time)
-    |
-    %strong Local:
-    = @event.place
-    |
-    %strong Por:
-    = @event.speaker
-    |
-    %strong Realização:
-    = @event.performance
-  .col-md-6.event-left    
-    -if(@event.image.exists?)
-      %p
-        = image_tag @event.image.url, class: "img-responsive"
-  .col-md-6
-    %p.text-justify
-      %strong Resumo:
-      - @event.summary.split("\n").each do |line|
-        = line
-        %br  
+    = image_tag "title" , class: "img-responsive"
+  %h1.text-uppercase Próximo evento
+  -if !@event.nil?
+    .col-md-8
+      %h1= @event.title
+    %h3.text-center
+      = @event.date
+      |
+      = @event.time.to_formatted_s(:time)
+      |
+      %strong Local:
+      = @event.place
+      |
+      %strong Por:
+      = @event.speaker
+      |
+      %strong Realização:
+      = @event.performance
+    .col-md-6.event-left    
+      -if(@event.image.exists?)
+        %p
+          = image_tag @event.image.url, class: "img-responsive"
+    .col-md-6
+      %p.text-justify
+        %strong Resumo:
+        - @event.summary.split("\n").each do |line|
+          = line
+          %br 
+  -else
+    %h2.text-center Não existem eventos próximos
