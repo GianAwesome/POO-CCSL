@@ -9,11 +9,10 @@ Background: user and event_type have been added to database
   | john      | 123456    |
 
   And I am logged in as "john", "123456"
-  And I am on "the new event page"
-
   And the following event_type exists:
   | name      |
   | Palestra  |
+  And I am on "the new event page"
 
 
 Scenario: create an event
@@ -26,10 +25,11 @@ Scenario: create an event
   | event_responsible   | Vc            |
   | event_performance   | Alguém        |
   | event_url           | www.site.com  |
-  
+  And I select "Palestra" from "event_event_type_id"
+  And I select "April 04, 2016 14:30" as the date from "event_time"
   And I press "Submeter"
-  Then the event_type "Palestra" exists
-  And I should see "Evento criado com sucesso"
+  Then I should see "Evento criado com sucesso"
+  And the event_type "Palestra" exists
   And I should see "Nova Reunião"
   And I should see "Asd Reunião"
   And I should see "Aqui"
