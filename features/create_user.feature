@@ -13,9 +13,11 @@ Background: admin has been added to database
 
 
 Scenario: create a new user
-  When I fill in "Username" with "john"
-  And I fill in "Senha" with "654321"
-  And I fill in "Confirmar Senha" with "654321"
+  When I fill in the following:
+  | user_username              | john          |
+  | user_password              | 654321         |
+  | user_password_confirmation | 654321          |
+  
   And I press "Submeter"
   Then I should see "Usuario john criado com sucesso"
   And the user "john" exists
