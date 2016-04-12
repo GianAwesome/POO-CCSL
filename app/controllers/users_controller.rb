@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     else
       @user = User.find(params[:id])
       @user.destroy
-      flash[:notice] = "#{@user.username} apagado."
+      flash[:notice] = "#{@user.username} deletado com sucesso."
     end
     redirect_to users_path
   end

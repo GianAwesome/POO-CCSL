@@ -30,6 +30,15 @@ Then /I should see an admin password/ do
   end
 end
 
+Then /the user "(.+)" does not exists/ do |username|
+  User.exists?(username: username)
+end
+
 Then /the user "(.+)" exists/ do |username|
   User.exists?(username: username)
+end
+
+When(/^I delete the user with the name "(.*?)"$/) do |title|
+  find('tr', text: title).click_link("Apagar")
+  page.driver.browser.switch_to.alert.accept
 end

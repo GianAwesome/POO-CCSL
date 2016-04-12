@@ -15,5 +15,5 @@ Scenario: log in in the system
   When I fill in "Username" with "john"
   And I fill in "Senha" with "12345678"
   And I press "Entrar"
-  Then I should see "Meus eventos"
-  And I should see "Criar evento"
+  Then I should see "Lista de eventos"
+  And I should see "Novo evento"

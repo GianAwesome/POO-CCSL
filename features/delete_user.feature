@@ -15,9 +15,8 @@ Background: user has been added to database
   And I am logged in as "admin", "123456"
   And I am on "the users page"
 
-
+@javascript
 Scenario: delete user
-  When I follow "john"
-  And I follow "Deletar"
-  Then I should see "Usuario deletado com secesso"
+  When I delete the user with the name "john"
+  Then I should see "john deletado com sucesso."
   And the user "john" does not exists
