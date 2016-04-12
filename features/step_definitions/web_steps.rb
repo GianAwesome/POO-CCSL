@@ -81,3 +81,13 @@ end
 Then /^(?:|I )should see "([^"]*)" before "([^"]*)"$/ do |first_item, second_item|
   page.body.should =~ /#{first_item}.*#{second_item}/m
 end
+
+When(/^I follow "(.*?)" in "(.*?)" line$/)do |link, line|
+  find('tr', text: line).click_link(link)
+end
+
+When(/^I confirm the dialog$/) do
+  page.driver.browser.switch_to.alert.accept
+end
+
+

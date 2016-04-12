@@ -1,6 +1,6 @@
 Feature: make user admin
   As admin,
-  So others people administer the system,
+  So others people can administer the system,
   I want to make an user admin
 
 Background: admin has been added to database
