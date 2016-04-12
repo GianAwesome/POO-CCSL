@@ -13,8 +13,8 @@ Background: user and event has been added to database
   | Palestra  |
 
   And the following events exists:
-  | title | summary | time | place | address | speaker | responsible | performance | event_type_id | user |
-  | Evento | a | 2056-04-26 08:00:00 | ccsl | ime | Barreira | todos     | MAC    | 1       | john  |
+  | title | summary | time | place | address | speaker | responsible | performance | event_type_id | user_id |
+  | Evento 1 | a | 2016-04-26 08:00:00 | ccsl | ime | Barreira | todos     | MAC    | 1       | 1 |
 
   And I am logged in as "john", "123456"
   And I am on "the events page"
