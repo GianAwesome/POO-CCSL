@@ -33,7 +33,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-  
+    @event.time = Time.now
   end
 
   # GET /events/1/edit
@@ -46,7 +46,8 @@ class EventsController < ApplicationController
   end
 
   def next3
-    @events = Event.order(:time)[0..2]
+    @events = Event.after.order_time.first(3)
+    @fullpage = true
   end
   
   # POST /events

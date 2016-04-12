@@ -42,8 +42,8 @@ class Event < ActiveRecord::Base
     order(:time)
   end
 
-  def self.after (day=Time.now) 
-    where("time >= ?", day)
+  def self.after (day=Time.now)
+    where("time >= ?", day - 3.hours)
   end
 
   def self.user_events user
