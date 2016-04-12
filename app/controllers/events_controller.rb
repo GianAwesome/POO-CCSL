@@ -41,7 +41,8 @@ class EventsController < ApplicationController
   end
 
   def next 
-    @event = Event.order(:time).first
+    @event = Event.after.order_time.first
+    @fullpage = true
   end
 
   def next3

@@ -1,14 +1,14 @@
-.col-md-offset-2
+.col-md-offset-1
   %h1= @event.title
-  .col-md-7.event-left
-    %p
+  .col-md-8.event-left    
+    -if(@event.image.exists?)
+      %p
+        = image_tag @event.image.url, class: "img-responsive"
+    %p.text-justify
       %strong Resumo:
       - @event.summary.split("\n").each do |line|
         = line
         %br
-    -if(@event.image.exists?)
-      %p
-        = image_tag @event.image.url
   .col-md-3
     %p
       %strong Horário:

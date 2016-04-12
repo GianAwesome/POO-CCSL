@@ -6,36 +6,40 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %header
-      %nav.navbar-default
-        .container-fluid
-          .navbar-header
-            = link_to "CCSL", root_path, :class => "navbar-brand"
-          %ul.nav.navbar-nav
-            %li.nav-item= link_to "Usuários", users_path, class: "nav-link" if admin?
-            %li.nav-item= link_to "Eventos", events_path, class: "nav-link" if logged_in?
-            %li.nav-item= link_to "Calendário", calendar_path, class: "nav-link"
-          %ul.nav.navbar-nav.navbar-right
-            - if logged_in?
-              %li.nav-item
-                = link_to logout_path, method: "delete", class: "nav-link" do
-                  %span(class="glyphicon glyphicon-log-out")
-                  Sair
-            - else
-              %li.nav-item
-                = link_to login_path, class: "nav-link" do
-                  %span(class="glyphicon glyphicon-log-in")
-                  Entrar
-    .container
-      .row
-        .col-md-6.col-md-offset-3
-          %br
-          - if flash[:notice]
-            #notice.message.alert.alert-info= flash[:notice]
-          - elsif flash[:warning]
-            #warning.has_error.message.alert.alert-danger
-              %ul.warning
-                - flash[:warning].each do |msg|
-                  %li= msg
-      .row
+    - if @fullpage.nil?
+      %header
+        %nav.navbar-default
+          .container-fluid
+            .navbar-header
+              = link_to "CCSL", root_path, :class => "navbar-brand"
+            %ul.nav.navbar-nav
+              %li.nav-item= link_to "Usuários", users_path, class: "nav-link" if admin?
+              %li.nav-item= link_to "Eventos", events_path, class: "nav-link" if logged_in?
+              %li.nav-item= link_to "Calendário", calendar_path, class: "nav-link"
+            %ul.nav.navbar-nav.navbar-right
+              - if logged_in?
+                %li.nav-item
+                  = link_to logout_path, method: "delete", class: "nav-link" do
+                    %span(class="glyphicon glyphicon-log-out")
+                    Sair
+              - else
+                %li.nav-item
+                  = link_to login_path, class: "nav-link" do
+                    %span(class="glyphicon glyphicon-log-in")
+                    Entrar
+      .container
+        .row
+          .col-md-6.col-md-offset-3
+            %br
+            - if flash[:notice]
+              #notice.message.alert.alert-info= flash[:notice]
+            - elsif flash[:warning]
+              #warning.has_error.message.alert.alert-danger
+                %ul.warning
+                  - flash[:warning].each do |msg|
+                    %li= msg
+        .row
+          = yield
+    - if !@fullpage.nil?
+      .container-fluid
         = yield
