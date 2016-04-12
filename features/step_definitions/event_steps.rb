@@ -1,5 +1,5 @@
 Then /the event "(.+)" exists/ do |eventname|
-  Event.exists?(name: eventname)
+  Event.exists?(title: eventname)
 end
 
 Given(/^the following events exists:$/) do |events_table|
