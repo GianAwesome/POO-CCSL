@@ -5,6 +5,12 @@
   %p
     %strong Tipo:
     = (@user.admin)? "Administrador": "Usuario Comum"
-  = link_to 'Editar', edit_user_path(@user)
-  |
-  \#{link_to 'Voltar', users_path}
+  =link_to users_path, class: "btn btn-default btn-sm" do
+    %span(class="glyphicon glyphicon-arrow-left")
+    Voltar  
+  = link_to edit_user_path(@user), class: "btn btn-default btn-sm" do
+    %span(class="glyphicon glyphicon-edit")
+    Editar
+  = link_to @user, method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-default btn-sm" do
+    %span(class="glyphicon glyphicon-remove")
+    Apagar

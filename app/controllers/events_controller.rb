@@ -112,7 +112,7 @@ class EventsController < ApplicationController
     end
 
     def check_user
-      if current_user != @event.user
+      unless current_user? @event.user or admin?
         redirect_to events_path
         flash[:notice] = "Voce nao possui direitos para acessar esse recurso"
       end

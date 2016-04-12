@@ -16,4 +16,4 @@ Scenario: log in in the system
   And I fill in "Senha" with "12345678"
   And I press "Entrar"
   Then I should see "Lista de eventos"
-  And I should see "Novo evento"
+  And I should see "Novo Evento"
