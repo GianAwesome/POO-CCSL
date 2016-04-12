@@ -8,9 +8,13 @@ Background: user and event has been added to database
   | username  | password  |
   | john      | 123456    |
 
+  And the following event_type exists:
+  | name      |
+  | Palestra  |
+
   And the following events exists:
-  | title | summary | time | place | address | speaker | responsible | performance | event_type_id |
-  | Evento | a | 2056-04-26 08:00:00 | ccsl | ime | Barreira | todos     | MAC    | 1       |
+  | title | summary | time | place | address | speaker | responsible | performance | event_type_id | user |
+  | Evento | a | 2056-04-26 08:00:00 | ccsl | ime | Barreira | todos     | MAC    | 1       | john  |
 
   And I am logged in as "john", "123456"
   And I am on "the events page"
@@ -20,4 +24,4 @@ Scenario: delete event
   When I follow "Apagar" in "Evento" line
   And I confirm the dialog
   Then I should see "Evento apagado"
-  And the event "Evento 1" does not exists
+  And the event "Evento" does not exists
