@@ -37,6 +37,8 @@ gem 'paperclip'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
+gem 'pg'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -51,7 +53,7 @@ end
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  
+
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'debugger'  
 
