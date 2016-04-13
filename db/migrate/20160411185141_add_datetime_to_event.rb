@@ -1,14 +1,16 @@
 class AddDatetimeToEvent < ActiveRecord::Migration
   def up
-    change_column :events, :time, :datetime
+    rename_column :events, :time, :oldtime
+    add_column :events, :time, :datetime
 
     Event.all.each do |event|
       d = event.date
-      t = event.time
+      t = event.oldtime
       event.update_attributes! :time => DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
     end
 
     remove_column :events, :date
+    remove_column :events, :oldtime
   end
 
   def down
