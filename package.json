@@ -1,0 +1,22 @@
+{
+  "name": "POO-CCSL",
+  "version": "1.0.0",
+  "description": "POO-CCSL",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GianAwesome/POO-CCSL"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GianAwesome/POO-CCSL/issues"
+  },
+  "homepage": "https://github.com/GianAwesome/POO-CCSL"
+}
