@@ -6,9 +6,11 @@
   border-right: 1px solid #DDD;
 }
 
-.next {
+.next { 
+  padding: 0 15px;
   h1 {
     font-size: 70px;
+    margin: 0;
   }
 
   p {
@@ -16,12 +18,12 @@
     line-height: 25px;
   }
 
-  h3 {
-    margin-top: 10px;
+  h3 {    
     font-size: 35px;
   }
 
   h2 {
+    margin-top: 5px;
     font-size: 40px;
   }
 
@@ -33,4 +35,16 @@
       color:#f5f5f5;
     }
   }
+
+  .img-next {
+    max-height: 70vh;
+    max-width: 50%;
+    margin-right: 30px;
+    margin-bottom: 5px;
+  }
+
+  .title {
+    margin-top: 5px;
+  } 
+
 }

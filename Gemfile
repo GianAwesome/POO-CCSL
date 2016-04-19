@@ -37,7 +37,9 @@ gem 'paperclip'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
-gem 'pg'
+group :production do
+  gem 'pg'
+end
 
 # Use Unicorn as the app server
 # gem 'unicorn'

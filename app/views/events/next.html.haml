@@ -1,12 +1,14 @@
 .next.row
-  .row
-  .col-md-4
-    %br
-    = image_tag "title" , class: "img-responsive"
-  %h1.text-uppercase Próximo evento
-  -if !@event.nil?
+  .row.title
+    .col-md-4
+      = image_tag "title" , class: "img-responsive title"
     .col-md-8
-      %h1= @event.title
+      %h1.text-uppercase 
+        - if !@event.nil?
+          = @event.title
+        - else
+          Próximo evento
+  - if !@event.nil?
     %h3.text-center
       = @event.date
       |
@@ -19,16 +21,14 @@
       = @event.speaker
       |
       %strong Realização:
-      = @event.performance
-    .col-md-6.event-left    
-      -if(@event.image.exists?)
-        %p
-          = image_tag @event.image.url, class: "img-responsive"
-    .col-md-6
-      %p.text-justify
-        %strong Resumo:
-        - @event.summary.split("\n").each do |line|
-          = line
-          %br 
-  -else
+      = @event.performance 
+    -if @event.image.exists?
+      %p
+        = image_tag @event.image.url, class: "img-responsive pull-left img-next"
+    %p.text-justify
+      %strong Resumo:
+      - @event.summary.split("\n").each do |line|
+        = line
+        %br 
+  - else
     %h2.text-center Não existem eventos próximos
