@@ -17,3 +17,9 @@ Scenario: log in in the system
   And I press "Entrar"
   Then I should see "Lista de eventos"
   And I should see "Novo Evento"
+
+Scenario: fail log in
+  When I fill in "Username" with "john"
+  And I fill in "Senha" with "123456789"
+  And I press "Entrar"
+  Then I should see "Username ou senha invalidos"
