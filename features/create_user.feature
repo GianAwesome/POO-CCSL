@@ -14,10 +14,20 @@ Background: admin has been added to database
 
 Scenario: create a new user
   When I fill in the following:
-  | user_username              | john          |
-  | user_password              | 654321         |
+  | user_username              | john            |
+  | user_password              | 654321          |
   | user_password_confirmation | 654321          |
   
   And I press "Submeter"
   Then I should see "Usuario john criado com sucesso"
   And the user "john" exists
+
+Scenario: create a new user with mismatching password
+  When I fill in the following:
+  | user_username              | john             |
+  | user_password              | 654321           |
+  | user_password_confirmation | 654322           |
+  
+  And I press "Submeter"
+  Then I should not see "Usuario john criado com sucesso"
+  And the user "john" does not exists

@@ -20,3 +20,9 @@ Scenario: delete user
   When I delete the user with the name "john"
   Then I should see "john deletado com sucesso."
   And the user "john" does not exists
+
+@javascript
+Scenario: delete last admin
+  When I delete the user with the name "admin"
+  Then I should not see "admin deletado com sucesso."
+  And the user "admin" exists

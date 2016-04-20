@@ -42,6 +42,10 @@ Then /the user "(.+)" is admin/ do |username|
   User.find_by(username: username).admin
 end
 
+Then /the user "(.+)" has the password "(.+)"/ do |username, password|
+  User.find_by(username: username).authenticate(password)
+end
+
 When(/^I delete the user with the name "(.*?)"$/) do |title|
   find('tr', text: title).click_link("Apagar")
   page.driver.browser.switch_to.alert.accept

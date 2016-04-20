@@ -42,3 +42,7 @@ Scenario: create an event
   And I should see "04/04/2016"
   And I should see "14:30"
   And the event "Nova Reunião" exists
+
+Scenario: create event with empty fields
+  When I press "Submeter"
+  Then I should not see "Evento criado com sucesso"
