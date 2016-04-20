@@ -42,6 +42,10 @@ Then /the user "(.+)" is admin/ do |username|
   User.find_by(username: username).admin
 end
 
+Then /the user "(.+)" is not admin/ do |username|
+  !User.find_by(username: username).admin
+end
+
 Then /the user "(.+)" has the password "(.+)"/ do |username, password|
   User.find_by(username: username).authenticate(password)
 end
@@ -53,5 +57,10 @@ end
 
 When(/^I make admin the user with the name "(.*?)"$/) do |title|
   find('tr', text: title).click_link("Tornar Administrador")
+  page.driver.browser.switch_to.alert.accept
+end
+
+When /I make user the admin with the name "(.*?)"/ do |name|
+  find('tr', text: name).click_link("Tornar Usuario Comum")
   page.driver.browser.switch_to.alert.accept
 end

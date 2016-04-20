@@ -20,3 +20,9 @@ Scenario: make an user admin
   When I make admin the user with the name "john"
   Then I should see "Usuario atualizado com sucesso."
   And the user "john" is admin
+
+@javascript
+Scenario: fail admin to user
+  When I make user the admin with the name "admin"
+  Then I should see "O sistema deve ter no minimo um administrador"
+  And the user "john" is not admin

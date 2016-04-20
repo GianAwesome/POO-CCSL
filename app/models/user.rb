@@ -15,6 +15,8 @@ validates :username,
     presence: true,
     length: { minimum: 6 } 
 
+  attr_accessor :remember_token
+  
   # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

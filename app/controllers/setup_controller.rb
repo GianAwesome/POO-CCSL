@@ -1,6 +1,5 @@
 class SetupController < ApplicationController
 
-  # before_filter :check_config, :only => 'index'
   skip_before_filter :set_current_user
   skip_before_filter :first_run
   def index
@@ -27,10 +26,5 @@ class SetupController < ApplicationController
       newpass = ""
       1.upto(7) { |i| newpass << chars[rand(chars.size-1)] }
       return newpass
-    end
-
-    def check_config
-      return unless User.count == 0
-      redirect_to users_path
     end
 end

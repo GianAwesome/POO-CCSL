@@ -14,6 +14,7 @@ Background: user has been added to database
 Scenario: log in in the system
   When I fill in "Username" with "john"
   And I fill in "Senha" with "12345678"
+  And I check "remember_me"
   And I press "Entrar"
   Then I should see "Lista de eventos"
   And I should see "Novo Evento"
