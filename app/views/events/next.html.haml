@@ -1,7 +1,7 @@
 .next.row
   .row.title
     .col-md-4
-      = image_tag "title" , class: "img-responsive title"
+      = image_tag asset_path("title") , class: "img-responsive"
     .col-md-8
       %h1.text-uppercase 
         - if !@event.nil?
