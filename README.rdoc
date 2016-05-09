@@ -4,9 +4,9 @@
 - Version 1.9.3
 
 * Database creation & initialization
-- <tt>$ bundle install --without production
-$ rake db:migrate
-$ rake db:seed</tt>
+- <tt>$ bundle install --without production</tt>
+- <tt>$ rake db:migrate</tt>
+- <tt>$ rake db:seed</tt>
 
 * Deployment
 - <tt>rails s</tt>
