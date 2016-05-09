@@ -1,9 +1,9 @@
 == README
 
-* Ruby
+==== Ruby
 Version 1.9.3
 
-* Database creation & initialization
+==== Database creation & initialization
 
 <tt>$ bundle install --without production</tt>
 
@@ -11,8 +11,8 @@ Version 1.9.3
 
 <tt>$ rake db:seed</tt>
 
-* Deployment
+==== Deployment
 <tt>rails s</tt>
 
-* Run tests
+==== Run tests
 <tt>$ bundle exec rake cucumber</tt>
